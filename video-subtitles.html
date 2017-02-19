@@ -1,0 +1,45 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<dom-module id="video-subtitles">
+  <template>
+    <style>
+      :host{
+        position: relative;
+        display: block;
+      }
+      ::content video{
+        width: 100%;
+      }
+      .subtitles{
+        position: absolute;
+        bottom: 1em;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+      }
+    </style>
+    <content></content>
+    <div class="subtitles"></div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'video-subtitles',
+      ready: function(){
+        var track = document.querySelector('video').textTracks[0];
+        track.mode = 'hidden';
+        var subtitles = document.querySelector('.subtitles');
+        track.oncuechange = function(){
+          var activeCue = this.activeCues[0];
+          if(activeCue){
+            subtitles.innerHTML = activeCue.text.replace(/\r?\n/g, '<br/>');
+          }else{
+            subtitles.innerHTML = '';
+          }
+        }
+      }
+
+    });
+  </script>
+</dom-module>

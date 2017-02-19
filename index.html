@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>video-subtitles</title>
+
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <!--link rel="import" href="bower_components/iron-component-page/iron-component-page.html"-->
+    <link rel="import" href="video-subtitles.html">
+    
+    <style>
+      body{
+        margin: 0;
+      }
+      .subtitles{
+        height: 2em;
+        line-height: 1em;
+        font-size: 2em;
+        color: white;
+        text-shadow: 0px 0px 4px #000;
+      }
+      @media (min-width:769px){
+        .subtitles{
+          height: 2.8em;
+          line-height: 1.4em;
+          font-size: 2.8em;
+          color: white;
+          text-shadow: 0px 0px 4px #000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--iron-component-page src="video-subtitles.html"></iron-component-page-->
+    <video-subtitles>
+      <video controls>
+        <source src="video/video.mp4"></source>
+        <track src="vtt/subtitle.vtt" label="Spanish" kind="subtitles" srclang="es" default></track>
+      </video>
+    </video-subtitles>
+  </body>
+</html>
